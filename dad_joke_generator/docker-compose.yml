@@ -1,0 +1,19 @@
+
+version: "3"
+
+services:
+
+  server:
+
+    build: server/
+    command: python ./jokeServer.py
+    ports:
+      - 5555:5555
+
+  client:
+
+    build: client/
+    command: python ./jokeClient.py
+    network_mode: host
+    depends_on:
+      - server
